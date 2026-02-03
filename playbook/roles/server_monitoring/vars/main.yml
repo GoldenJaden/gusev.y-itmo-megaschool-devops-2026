@@ -1,0 +1,6 @@
+prometheus:
+  path: "/opt/monitoring"
+  version: v3.9.1
+  port: 9090
+
+grafana_admin_password: pass

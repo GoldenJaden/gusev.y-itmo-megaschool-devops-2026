@@ -1,0 +1,20 @@
+- name: Ensure node-exporter and cadvisor project directory exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ path }}"
+
+- name: Render docker-compose.yml for node-exporter and cadvisor
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ path }}/docker-compose.yml"
+    mode: "0644"
+
+- name: Deploy node-exporter and cadvisor via docker compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ path }}"
+    state: present
+    pull: always
+    remove_orphans: true

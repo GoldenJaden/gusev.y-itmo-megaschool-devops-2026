@@ -1,0 +1,9 @@
+path: "/opt/node-exporter"
+
+node_exporter:
+  version: v1.10.2
+  port: 9100
+
+cadvisor:
+  version: v0.55.1
+  port: 8080

@@ -1,4 +1,4 @@
-nexus_version: "3.89.0-alpine"
+nexus_version: "3.87.2-alpine"
 nexus_data_dir: /opt/nexus-data
 nexus_compose_dir: /opt/nexus
 

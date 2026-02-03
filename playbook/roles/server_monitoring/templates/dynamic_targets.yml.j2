@@ -1,0 +1,7 @@
+- targets:
+{% for h in groups['all'] %}
+    - {{ h }}:9100
+{% endfor %}
+  labels:
+    job: nodes
+    env: test

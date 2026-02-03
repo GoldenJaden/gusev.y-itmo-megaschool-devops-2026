@@ -1,10 +1,15 @@
-- name: Configure users
-  hosts: node
+# - name: Base configure
+#   hosts: node:monitoring
+#   become: true
+#   roles:
+#     - users
+#     - docker
+#     - users_docker
+#     - hosts_monitoring
+
+- name: Configure centralised monitoring server
+  hosts: monitoring
   become: true
   roles:
-    - users
-    - docker
-    - users_docker
+    - server_monitoring
 
-# TODO: 
-# Общая таска на все хосты с users,docker,users_docker

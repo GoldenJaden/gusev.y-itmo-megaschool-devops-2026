@@ -1,0 +1,7 @@
+- targets:
+{% for h in groups['all'] %}
+    - {{ h }}:8080
+{% endfor %}
+  labels:
+    job: cadvisor
+    env: test

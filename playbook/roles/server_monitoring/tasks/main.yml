@@ -1,0 +1,72 @@
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - /opt/monitoring
+    - /opt/monitoring/prometheus
+    - /opt/monitoring/grafana
+    - /opt/monitoring/grafana/data
+
+# --- Prometheus ---
+- name: Render prometheus config to host
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /opt/monitoring/prometheus/prometheus.yml
+    mode: "0644"
+
+# --- GRAFANA ---
+- name: Grafana data ownership
+  ansible.builtin.file:
+    path: /opt/monitoring/grafana/data
+    owner: "472"
+    group: "472"
+    mode: "0755"
+
+- name: Create Grafana provisioning dirs
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - /opt/monitoring/grafana/provisioning
+    - /opt/monitoring/grafana/provisioning/datasources
+
+- name: Provision Prometheus datasource
+  ansible.builtin.template:
+    src: grafana-provisioning.yml.j2
+    dest: /opt/monitoring/grafana/provisioning/datasources/prometheus.yml
+    mode: "0644"
+
+- name: Ensure targets directory exists
+  ansible.builtin.file:
+    path: /opt/monitoring/prometheus/targets
+    state: directory
+    mode: "0755"
+
+- name: Render node-exporter targets from inventory group [node]
+  ansible.builtin.template:
+    dest: /opt/monitoring/prometheus/targets/node_targets.yml
+    src: dynamic_targets.yml.j2
+    mode: "0644"
+
+- name: Render node-exporter targets for cadvisor
+  ansible.builtin.template:
+    dest: /opt/monitoring/prometheus/targets/cadvisor_targets.yml
+    src: cadvisor_targets.yml.j2
+    mode: "0644"
+
+# --- Deploy ---
+- name: Render docker-compose.yml to host
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: /opt/monitoring/docker-compose.yml
+    mode: "0644"
+
+- name: Deploy
+  community.docker.docker_compose_v2:
+    project_src: /opt/monitoring
+    state: present
+    pull: always
+    remove_orphans: true

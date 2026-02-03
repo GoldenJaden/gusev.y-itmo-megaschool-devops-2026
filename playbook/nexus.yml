@@ -6,3 +6,4 @@
     - docker
     - users_docker
     - nexus
+    - hosts_monitoring
