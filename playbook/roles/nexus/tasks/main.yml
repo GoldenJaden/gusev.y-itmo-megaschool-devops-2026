@@ -1,0 +1,20 @@
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: 200
+    group: 200
+    mode: "0755"
+  loop:
+    - "{{ nexus_data_dir }}"
+    - "{{ nexus_compose_dir }}"
+
+- name: Deploy docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ nexus_compose_dir }}/docker-compose.yml"
+
+- name: Start Nexus
+  community.docker.docker_compose_v2:
+    project_src: "{{ nexus_compose_dir }}"
+    state: present

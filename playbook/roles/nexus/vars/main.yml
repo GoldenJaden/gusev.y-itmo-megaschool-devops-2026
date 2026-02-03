@@ -1,0 +1,8 @@
+nexus_version: "3.89.0-alpine"
+nexus_data_dir: /opt/nexus-data
+nexus_compose_dir: /opt/nexus
+
+nexus_http_port: 8081
+nexus_docker_proxy_port: 5000
+
+nexus_admin_password: admin123

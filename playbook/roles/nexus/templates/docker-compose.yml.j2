@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  nexus:
+    image: sonatype/nexus3:{{ nexus_version }}
+    container_name: nexus
+    restart: unless-stopped
+    ports:
+      - "{{ nexus_http_port }}:8081"
+      - "{{ nexus_docker_proxy_port }}:5000"
+    volumes:
+      - "{{ nexus_data_dir }}:/nexus-data"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:8081/service/rest/v1/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10

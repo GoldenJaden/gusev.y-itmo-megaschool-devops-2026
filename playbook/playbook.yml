@@ -3,3 +3,8 @@
   become: true
   roles:
     - users
+    - docker
+    - users_docker
+
+# TODO: 
+# Общая таска на все хосты с users,docker,users_docker

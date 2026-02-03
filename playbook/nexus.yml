@@ -1,0 +1,8 @@
+- name: Install nexus
+  hosts: nexus
+  become: true
+  roles:
+    - users
+    - docker
+    - users_docker
+    - nexus
