@@ -1,11 +1,11 @@
-# - name: Base configure
-#   hosts: node:monitoring
-#   become: true
-#   roles:
-#     - users
-#     - docker
-#     - users_docker
-#     - hosts_monitoring
+- name: Base configure
+  hosts: node:monitoring
+  become: true
+  roles:
+    - users
+    - docker
+    - users_docker
+    - hosts_monitoring
 
 - name: Configure centralised monitoring server
   hosts: monitoring
