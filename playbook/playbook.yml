@@ -1,0 +1,5 @@
+- name: Configure users
+  hosts: node
+  become: true
+  roles:
+    - users
