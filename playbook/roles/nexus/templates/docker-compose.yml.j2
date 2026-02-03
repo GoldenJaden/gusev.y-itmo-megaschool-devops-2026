@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nexus:
-    image: sonatype/nexus3:{{ nexus_version }}
+    image: {{ nexus.proxy }}/sonatype/nexus3:{{ nexus_version }}
     container_name: nexus
     restart: unless-stopped
     ports:

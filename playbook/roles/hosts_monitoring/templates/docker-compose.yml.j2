@@ -1,6 +1,6 @@
 services:
   node-exporter:
-    image: prom/node-exporter:{{ node_exporter.version }}
+    image: {{ nexus.proxy }}/prom/node-exporter:{{ node_exporter.version }}
     container_name: node-exporter
     restart: unless-stopped
     volumes:

@@ -1,0 +1,118 @@
+
+PLAY [Base configure] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [users : Ensure groups are present] ***************************************
+ok: [192.168.0.122] => (item={'name': 'developers', 'gid': 1003, 'docker_access': True})
+ok: [192.168.0.121] => (item={'name': 'developers', 'gid': 1003, 'docker_access': True})
+ok: [192.168.0.121] => (item={'name': 'admins', 'gid': 1002, 'docker_access': True, 'full_sudo': True})
+ok: [192.168.0.122] => (item={'name': 'admins', 'gid': 1002, 'docker_access': True, 'full_sudo': True})
+
+TASK [users : Ensure users are present] ****************************************
+ok: [192.168.0.122] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.121] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.121] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.122] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+
+TASK [users : Give admins sudo access without password] ************************
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [users : Add authorized key for users] ************************************
+ok: [192.168.0.122] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.121] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.122] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.121] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+
+TASK [docker : Install base packages] ******************************************
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [docker : Add docker repo key] ********************************************
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [docker : Add docker repo] ************************************************
+ok: [192.168.0.122]
+ok: [192.168.0.121]
+
+TASK [docker : Install Docker Engine and compose] ******************************
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [docker : Enable and start Docker] ****************************************
+ok: [192.168.0.122]
+ok: [192.168.0.121]
+
+TASK [docker : Copy daemon.json config] ****************************************
+ok: [192.168.0.122]
+ok: [192.168.0.121]
+
+TASK [docker : Restart docker] *************************************************
+changed: [192.168.0.121]
+changed: [192.168.0.122]
+
+TASK [users_docker : Add users to docker group] ********************************
+ok: [192.168.0.121] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.121] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.122] => (item={'name': 'developer1', 'group': 'developers', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+ok: [192.168.0.122] => (item={'name': 'admin1', 'group': 'admins', 'ssh_public_key': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoV8un31UtOT2zOEmNsgWAI8xWvXyjfBhEcwO1hjuGJG9HNiC7a8ncBw0QNAwIcEAbQU3t4hyOTDqIMYS7k1slU6qbBm4+/5Ab38OSCPaF/N8VvTrjkZhSw9VVXpUGQqgT8sMKdVsWKDbwmcmhOl6H4DQIfMbfsdiKYzUl5di6okdyUQ4VUvsvKjQSbroOAT4HCNHaOqGWkKy8gBXf3tKBsEVhGkaCndWu205rkcSbIHRVzhk+U6e/GnI29116tsoNg4/T0lVyfBj4sAONHUp9EJAEir/dpqMkZLV1vH+PWt7CZ0B+WU4lcUZ27JbfnrBiEN9IXf6dvoz1mzpkS6dqVZ+NTwIMUMawXOPAYRrSaNsLWu+Ksh6iuWvYn+qi3/ilS3x8aTyvvFO8iYf9Y/T7WYWp+yyekYuYG8GCqgNHB9H6pCIyWEqrcLV4/oWvgAHqlwdsKqJW+VI2TI62/7a+nSRuarWsz44W/kr/Y+ywZUtEz4Qm4p9wJXaXHEd4oJE= goldenjaden@DESKTOP-7O7A6SV'})
+
+TASK [hosts_monitoring : Ensure node-exporter and cadvisor project directory exists] ***
+ok: [192.168.0.121] => (item=/opt/node-exporter)
+ok: [192.168.0.122] => (item=/opt/node-exporter)
+
+TASK [hosts_monitoring : Render docker-compose.yml for node-exporter and cadvisor] ***
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+TASK [hosts_monitoring : Deploy node-exporter and cadvisor via docker compose] ***
+ok: [192.168.0.121]
+ok: [192.168.0.122]
+
+PLAY [Configure centralised monitoring server] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Create directories] **********************************
+ok: [192.168.0.122] => (item=/opt/monitoring)
+ok: [192.168.0.122] => (item=/opt/monitoring/prometheus)
+ok: [192.168.0.122] => (item=/opt/monitoring/grafana)
+ok: [192.168.0.122] => (item=/opt/monitoring/grafana/data)
+
+TASK [server_monitoring : Render prometheus config to host] ********************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Grafana data ownership] ******************************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Create Grafana provisioning dirs] ********************
+ok: [192.168.0.122] => (item=/opt/monitoring/grafana/provisioning)
+ok: [192.168.0.122] => (item=/opt/monitoring/grafana/provisioning/datasources)
+
+TASK [server_monitoring : Provision Prometheus datasource] *********************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Ensure targets directory exists] *********************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Render node-exporter targets from inventory group [node]] ***
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Render node-exporter targets for cadvisor] ***********
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Render docker-compose.yml to host] *******************
+ok: [192.168.0.122]
+
+TASK [server_monitoring : Deploy] **********************************************
+ok: [192.168.0.122]
+
+PLAY RECAP *********************************************************************
+192.168.0.121              : ok=16   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.0.122              : ok=27   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
